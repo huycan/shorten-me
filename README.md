@@ -4,8 +4,8 @@
 ## Specs
 
 ### Features
-- [ ] Input a Url and get it shortened
-- [ ] Redirect to the correct URL when public users enter the shortened URL link
+- [x] Input a Url and get it shortened
+- [x] Redirect to the correct URL when public users enter the shortened URL link
 - [ ] Provide simple analytics with basic graphs / numbers (when going to shorten.me/[code]+)
   - [ ] Total hits (a hit is simple a redirect)
   - [ ] Daily hits last 7 days

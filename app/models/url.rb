@@ -4,22 +4,31 @@ class Url < ActiveRecord::Base
   end
 
   def encode!
-    self[:code] = encode self[:id], self[:full_url]
+    self[:code] = encode self[:id]
   end
 
   private
-  def encode id, full_url
-    code_map = [*('a'..'z'), *('A'..'Z'), *('0'..'9')]
-    base = code_map.length
+  def code_map
+    [*('a'..'z'), *('A'..'Z'), *('0'..'9')]
+  end
+
+  def convert number, base
     code = []
 
-    while id > 0
-      remainder = id % base
-      id = id / base
+    while number > 0
+      remainder = number % base
+      number = number / base
       code << remainder
     end
 
-    code.reverse.map { |digit| digit.to_s }
-    code.join
+    code
+  end
+
+  def encode id
+    codes = code_map
+    
+    code = convert id, codes.length
+    
+    (code.reverse.map { |digit| codes[digit] }).join
   end
 end
