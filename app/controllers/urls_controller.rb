@@ -1,14 +1,13 @@
 class UrlsController < ApplicationController
   def show
-    # cache
-
-    # db
-    url = Url.find_by!(code: params[:code])
+    full_url = Rails.cache.fetch("urls/#{ params[:code] }", expires_in: 60.days) do
+      (Url.find_by! code: params[:code]).full_url
+    end
 
     # enqueue for analytics
+    
 
-
-    redirect_to url.full_url
+    redirect_to full_url
   end
 
   def create
