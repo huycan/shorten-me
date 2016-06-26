@@ -17,7 +17,9 @@ class Url < ActiveRecord::Base
 
   def self.find_or_new original_url
     url = Url.find_or_create_by full_url: original_url
+
     url.encode! and url.save if url.code.blank?
+    
     url
   end
 

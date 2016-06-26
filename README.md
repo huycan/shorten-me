@@ -6,11 +6,11 @@
 ### Features
 - [x] Input a Url and get it shortened
 - [x] Redirect to the correct URL when public users enter the shortened URL link
-- [ ] Provide simple analytics with basic graphs / numbers (when going to shorten.me/[code]+)
-  - [ ] Total hits (a hit is simple a redirect)
-  - [ ] Daily hits last 7 days
-  - [ ] Total hits by browser
-  - [ ] Please build it such that additional analytics requirement (e.g. click by countrys etc.) will be easily supported
+- [x] Provide simple analytics with basic graphs / numbers (when going to shorten.me/[code]+)
+  - [x] Total hits (a hit is simple a redirect)
+  - [x] Daily hits last 7 days
+  - [x] Total hits by browser
+  - [x] Please build it such that additional analytics requirement (e.g. click by countrys etc.) will be easily supported
 
 ### UI - 2 pages
 * A homepage where users get their links shortened
