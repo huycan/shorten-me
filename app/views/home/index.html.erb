@@ -4,8 +4,12 @@
       <div class="inner cover">
         <h1 class="cover-heading">Shorten Me</h1>
         
-        <br/>
+        <br />
 
+        <img id="banana" src="http://rs657.pbsrc.com/albums/uu291/uss_monitor_2009/dancing%20fruit/dancingBanana.gif~c200" width="200px" height="200px">
+
+        <br />
+        
         <div>
           <fieldset class="form-group">
             <input type="text" name="full-url" id="full-url" placeholder="Enter full URL" class="form-control">    
@@ -26,6 +30,10 @@
 </div>
 
 <script type="text/javascript">
+  setInterval(function () {
+    $('#banana').hide(2000).show(1000);
+  }, 3000);
+
   function displayShortUrl(selector, shortUrl) {
     var buttonId = 'save-btn',
         html = `

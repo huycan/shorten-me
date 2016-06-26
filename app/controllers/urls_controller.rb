@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
     url = Url.from params[:code]
 
     # enqueue for analytics
-
+    
 
     redirect_to url.full_url
   end
