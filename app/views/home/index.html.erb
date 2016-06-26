@@ -25,34 +25,39 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
   function displayShortUrl(selector, shortUrl) {
-    var buttonId = 'save-btn'
+    var buttonId = 'save-btn',
+        html = `
+          <div class="api-result">
+            <p class="text-success font-italic font-weight-bold">
+              <a href="${ shortUrl }">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                ${ shortUrl }
+              </a>
+            </p>
+            
+            <button id="${ buttonId }" class="btn btn-success btn-sm">
+              <i class="fa fa-floppy-o" aria-hidden="true"></i> Copy to clipboard
+            </button>
+          </div>
+        `;
+
+    $(selector).hide().html(html).fadeIn('slow');
+  }
+
+  function displayError(selector, msg) {
     var html = `
-      <div class="api-result">
-        <p class="text-success font-italic font-weight-bold">
-          <a href="${ shortUrl }">
-            <i class="fa fa-link" aria-hidden="true"></i>
-            ${ shortUrl }
-          </a>
-        </p>
-        
-        <button id="${ buttonId }" class="btn btn-success btn-sm">
-          <i class="fa fa-floppy-o" aria-hidden="true"></i> Copy to clipboard
-        </button>
-      </div>
     `;
 
-    $(selector).html(html).fadeIn();
-
-
+    $(selector).hide().html(html).fadeIn('fast');
   }
 
   (function () {
-    var target = 'div#shortened-url';
+    var target = 'div#shortened-url',
+        control = 'a#shorten';
 
-    $('a#shorten').on('click', function () {
+    $(control).on('click', function () {
       console.log('me gusta');
 
       $
@@ -65,11 +70,10 @@
           dataType: 'json'
         })
         .done(function (data) {
-          console.log(data.url);
           displayShortUrl(target, data.url);
         })
         .error(function (request, stt, err) {
-          console.log(stt);
+          displayError(target, stt);
         })
         .always(function (data) {
           console.log(data);

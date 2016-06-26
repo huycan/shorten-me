@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'urls/:url', to: 'urls#show', as: :show_url, defaults: { format: 'html' }
+  get 'urls/:code', to: 'urls#show', as: :show_url
   post 'urls', to: 'urls#create', as: :create_url, defaults: { format: 'json' }
 
   root 'home#index'
