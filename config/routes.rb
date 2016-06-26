@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'urls/:url', to: 'urls#show', as: :show_url, defaults: { format: 'html' }
+  post 'urls', to: 'urls#create', as: :create_url, defaults: { format: 'json' }
+
+  root 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

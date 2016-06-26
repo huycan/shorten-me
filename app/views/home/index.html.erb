@@ -1,0 +1,79 @@
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="inner cover">
+        <h1 class="cover-heading">Shorten Me</h1>
+        
+        <br/>
+
+        <div>
+          <fieldset class="form-group">
+            <input type="text" name="full-url" id="full-url" placeholder="Enter full URL" class="form-control">    
+          </fieldset>
+          
+          <fieldset>
+            <a id="shorten" href="#" class="btn btn-primary btn-lg">
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            </a>
+          </fieldset>
+        </div>
+
+        <div id="shortened-url">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  function displayShortUrl(selector, shortUrl) {
+    var buttonId = 'save-btn'
+    var html = `
+      <div class="api-result">
+        <p class="text-success font-italic font-weight-bold">
+          <a href="${ shortUrl }">
+            <i class="fa fa-link" aria-hidden="true"></i>
+            ${ shortUrl }
+          </a>
+        </p>
+        
+        <button id="${ buttonId }" class="btn btn-success btn-sm">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> Copy to clipboard
+        </button>
+      </div>
+    `;
+
+    $(selector).html(html).fadeIn();
+
+
+  }
+
+  (function () {
+    var target = 'div#shortened-url';
+
+    $('a#shorten').on('click', function () {
+      console.log('me gusta');
+
+      $
+        .ajax({
+          method: 'post',
+          url: '/urls', 
+          data: {
+            'url': $('#full-url').val()
+          },
+          dataType: 'json'
+        })
+        .done(function (data) {
+          console.log(data.url);
+          displayShortUrl(target, data.url);
+        })
+        .error(function (request, stt, err) {
+          console.log(stt);
+        })
+        .always(function (data) {
+          console.log(data);
+        });
+    });
+  })();
+</script>
