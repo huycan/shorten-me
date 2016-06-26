@@ -52,3 +52,5 @@ end
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
+
+ruby '2.3.0'
