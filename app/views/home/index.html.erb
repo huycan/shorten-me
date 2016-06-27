@@ -81,7 +81,7 @@
           displayShortUrl(target, data.url);
         })
         .error(function (request, stt, err) {
-          displayError(target, stt);
+          displayError(target, request.responseText);
         })
         .always(function (data) {
           console.log(data);
