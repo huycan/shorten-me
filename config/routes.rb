@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'stats/show'
+
   get 'urls/:code', to: 'urls#show', as: :show_url
   post 'urls', to: 'urls#create', as: :create_url, defaults: { format: 'json' }
 
+  get '/:code', to: 'stats#show', as: :show_stats
+  
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

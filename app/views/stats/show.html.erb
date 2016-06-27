@@ -1,0 +1,40 @@
+<div class="containter report">
+  <h1>Stat for <%= @code %></h1>
+  <a href="/" class="btn btn-primary">Home</a>
+  <p>
+    <h3>Total Hits</h3>
+    <%= @hits %>
+  </p>
+
+  <p>
+    <h3>Last 7 days hit</h3>
+    <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Hits</th>
+      </tr>
+      <% @daily.each do |key, value| %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+    </table>
+  </p>
+
+  <p>
+    <h3>Hits by browser</h3>
+    <table class="table">
+      <tr>
+        <th>Browser</th>
+        <th>Hits</th>
+      </tr>
+      <% @browser.each do |key, value| %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+    </table>
+  </p>
+</div>

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626171220) do
+ActiveRecord::Schema.define(version: 20160627001531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "url_visits", force: :cascade do |t|
+    t.integer  "url_id",     null: false
+    t.text     "browser",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "url_visits", ["browser"], name: "index_url_visits_on_browser", using: :btree
+  add_index "url_visits", ["url_id"], name: "index_url_visits_on_url_id", using: :btree
 
   create_table "urls", force: :cascade do |t|
     t.text     "full_url",   null: false
@@ -26,4 +36,5 @@ ActiveRecord::Schema.define(version: 20160626171220) do
   add_index "urls", ["code"], name: "index_urls_on_code", using: :btree
   add_index "urls", ["full_url"], name: "index_urls_on_full_url", using: :btree
 
+  add_foreign_key "url_visits", "urls"
 end

@@ -35,8 +35,7 @@
   }, 5000);
 
   function displayShortUrl(selector, shortUrl) {
-    var buttonId = 'save-btn',
-        html = `
+    var html = `
           <div class="api-result">
             <p class="text-success font-italic font-weight-bold">
               <a href="${ shortUrl }">
@@ -44,10 +43,6 @@
                 ${ shortUrl }
               </a>
             </p>
-            
-            <button id="${ buttonId }" class="btn btn-success btn-sm">
-              <i class="fa fa-floppy-o" aria-hidden="true"></i> Copy to clipboard
-            </button>
           </div>
         `;
 
@@ -56,6 +51,11 @@
 
   function displayError(selector, msg) {
     var html = `
+      <div class="api-result">
+            <p class="text-danger font-italic font-weight-bold">
+              Error ${ msg }
+            </p>
+          </div>
     `;
 
     $(selector).hide().html(html).fadeIn('fast');
